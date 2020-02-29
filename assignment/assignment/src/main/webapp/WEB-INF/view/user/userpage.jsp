@@ -18,27 +18,25 @@ body {
 </head>
 <body> 
 
-<form action="/login" method="post">
+<form>
  
-    <h1>Login</h1>
-
+    
+     <%
+        String name=(String)session.getAttribute("name");
+     //   out.println(name);
+        String id=(String)session.getAttribute("id");
+     //   out.println(id);
+        %>
+<h1>Hello ${name}</h1>
     <hr>
 
-  <b>Username</b>
-    <input type="text" placeholder="Enter username" name="name" required>
 
-  <b>Password</b>
-    <input type="password" placeholder="Enter Password" name="password" required>
-
-   
-
-    <button type="submit" class="loginbtn">Login</button>
     <br>
-    <a href="/reg">Register Here</a>
+    <a href="/profile">Edit Profile</a>
     <br>
- 
-
-  
+  <a href="/sendmessage">Send Messages</a>
+<br>
+  <a href="/logout">Logout</a>
 </form>
 
 </body>
