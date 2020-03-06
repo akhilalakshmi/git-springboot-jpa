@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,27 +17,24 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.example.securityassignment.repository.UserRepository;
 import com.example.securityassignment.service.CustomUserDetailsService;
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+import com.example.securityassignment.service.InterfaceCustomUserDetailsService;
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
+@EnableWebSecurity
 @EnableJpaRepositories(basePackageClasses = UserRepository.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
-	private CustomUserDetailsService userDetailsService;
-	 @Override
-	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		 auth.userDetailsService(userDetailsService)
-		 .passwordEncoder(getPasswordEncoder());
-	 }
-	 
+	private InterfaceCustomUserDetailsService icustomuserservice;
+
 
 		@Override
 	    protected void configure(HttpSecurity http) throws Exception {
 			
-		
+		System.out.println("in configure****************");
 			http
 			.authorizeRequests()
-			.antMatchers("/login").permitAll()
+			.antMatchers("/login","/register").permitAll()
 			.antMatchers("/admin/**").authenticated()
 			.anyRequest().permitAll().and()
 			.formLogin().loginPage("/login").permitAll()
@@ -52,8 +50,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	                .and()
 	                .formLogin().permitAll();*/
 	    }
-	    
-	    private PasswordEncoder getPasswordEncoder() {
+		@Bean 
+	    public PasswordEncoder getPasswordEncoder() {
+	    	System.out.println("passwordencoder*********");
 	        return new PasswordEncoder() {
 	            @Override
 	            public String encode(CharSequence charSequence) {
@@ -66,7 +65,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	            }
 	        };
 	    }
-		
+		 @Override
+		    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+			 System.out.println("in configure  authentication//////////////////////");
+			 auth.userDetailsService(icustomuserservice)
+			 .passwordEncoder(getPasswordEncoder());
+		 }
+		 
 		/*@Bean
 	    public BCryptPasswordEncoder getPasswordEncoder() {
 	        return new BCryptPasswordEncoder();

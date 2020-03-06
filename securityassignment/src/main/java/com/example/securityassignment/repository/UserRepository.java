@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.securityassignment.model.Users;
 
 public interface UserRepository extends JpaRepository<Users, Integer>{
+
 	Optional<Users> findByName(String username);
+
+	
 
 }

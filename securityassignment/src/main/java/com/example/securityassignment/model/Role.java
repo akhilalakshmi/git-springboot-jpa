@@ -15,10 +15,13 @@ public class Role {
 	private int roleid;
 	private String rolename;
 	
+	public Role(String rolename) {
+		this.rolename = rolename;
 	
+	}
 	public Role() {
 
-		
+		System.out.println("in role()******");
 	}
 	public int getRoleid() {
 		return roleid;

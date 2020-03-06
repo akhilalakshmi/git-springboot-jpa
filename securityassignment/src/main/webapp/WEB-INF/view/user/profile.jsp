@@ -21,14 +21,14 @@ body {
   
     <hr>
 
-    <label for="email"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="name"  value="${userdet.name}" required>
+    <label for="email"><b>Name</b></label>
+    <input type="text" placeholder="Enter Username" name="name"  value="${user.name}" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" value="${userdet.password}" required>
+    <input type="password" placeholder="Enter Password" name="password" value="${user.password}" required>
 
-    <label for="psw-repeat"><b>Address</b></label>
-    <input type="address" placeholder="address" name="address"  value="${userdet.address}"required>
+    <label for="psw-repeat"><b>Email</b></label>
+    <input type="address" placeholder="address" name="address"  value="${user.email}"required>
     <hr>
 
    

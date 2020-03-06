@@ -25,7 +25,7 @@ body {
     <hr>
 
   <b>Username</b>
-    <input type="text" placeholder="Enter username" name="name" required>
+    <input type="text" placeholder="Enter username" name="username" required>
 
   <b>Password</b>
     <input type="password" placeholder="Enter Password" name="password" required>
@@ -34,7 +34,8 @@ body {
 
     <button type="submit" class="loginbtn">Login</button>
     <br>
-    <a href="/register">Register Here</a>
+    <a href="/registeradmin">Admin Registration</a>
+    <a href="/registeruser">User Registration</a>
     <br>
  
 

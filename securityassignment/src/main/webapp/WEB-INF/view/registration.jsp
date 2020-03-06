@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,23 +16,23 @@ body {
 </style>
 </head>
 <body>
-<form action="/reguser" method="post">
+<form action="/adduser" method="post">
   <div class="container">
-    <h1>Register</h1>
+    <h1>Register</h1><b>${roletype }<b>
     <p>Please fill in this form to create an account.</p>
-    <hr>
+    <hr>${msg}
 
-    <label for="email"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="name" required>
+  <b>Name</b>
+    <input type="text" placeholder="Enter Name" name="name" required>
 
-    <label for="psw"><b>Password</b></label>
+    <b>Password</b>
     <input type="password" placeholder="Enter Password" name="password" required>
 
-    <label for="psw-repeat"><b>Address</b></label>
-    <input type="address" placeholder="address" name="address" required>
-    <hr>
-
-   
+   <b>Email</b>
+    <input type="email" placeholder="email" name="email" required>
+   <b>Privilege</b>
+<input type="text"  name="rolename"  value="${roletype }" readonly="readonly">
+     <hr>
     <button type="submit" class="registerbtn">Register</button>
   
   </div>
