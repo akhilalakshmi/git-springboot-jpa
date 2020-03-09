@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,25 +19,25 @@ body {
 </style>
 </head>
 <body>
+  <a href="/user/success">Home</a>
+<form:form method="post" modelAttribute="msg"  action="/msgsending">
 
-<form action="/msgsending" method="post">
-     <%
-        String name=(String)session.getAttribute("name");
-     //   out.println(name);
-        String id=(String)session.getAttribute("id");
-     //   out.println(id);
-        %>
-<h1>Hello ${name}</h1>
-    <hr>
+    <hr>${sucessmsg}
     <table>
     <tr>
-    <td>Subject</td><td> <input type="text" placeholder="Please enter subject" name="subname" required></td>
+    <td>Subject</td><td> <form:input path="subname"  /> </td>
     </tr>
     <tr>
-    <td>Message</td><td><textarea name="msgcontent" rows="12" cols="20"></textarea></td>
+    <td>Message</td><td><form:textarea path="msgcontent" rows="5" cols="30" /></td>
     </tr>
-      <tr><td></td><td>  <button type="submit" class="editbtn">Edit</button></td></tr>
+      <tr><td></td><td>  <button type="submit" class="editbtn">Send</button></td></tr>
     </table>
-</form>
+
+	<form:hidden path="id" />
+
+		
+
+	</form:form>    
+
 </body>
 </html>

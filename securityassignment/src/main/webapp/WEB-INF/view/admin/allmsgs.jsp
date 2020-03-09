@@ -18,34 +18,42 @@ body {
 </style>
 </head>
 <body>
-
-<table border="2" class="table">
+  <a href="/user/success">Home</a>
+<table border="2" class="table" id="theTable">
 <tr>
-<td>Subject</td><td>Content</td>
+<td>Subject</td>
 </tr>
 <c:forEach items="${msglist}" var="msg">
-    <tr >  
+    <tr  id="${msg.id}"  onclick='trclick();'>  
         <td> ${msg.subname}</td>
-        <td>${msg.msgcontent}</td>
+   
         <td>  <input type="hidden" id="idValue" value="${msg.id}" />view content</td>
         
     </tr>
 </c:forEach>
 </table>
+
+<div id="content"><jsp:include page="content.jsp"></jsp:include></div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-
-$(document).ready(function(){
-	$(".table").on('click','tr',function(e){
-		  e.preventDefault();
-		  var $this = $(this);
-		  var rowId = $this.find("idValue").val();
-		 // var id = $(this).closest('tr').val();
-		  alert(rowId);
-		});
-	
+$(document).ready(function() {
+	  $('#theTable tr').click(function() {
+		    	    
+	       $.ajax({
+	    	   url:'<%=request.getContextPath()%>/getContent',
+      		 type : "GET",
+       		data:{
+       			msgid:this.id
+    	         },
+    	   success:function(response){
+    		   $("#content").empty();
+    		   $("#content").append(response);
+    	   }
+       
+	  });
+	});
 });
 </script>
 		

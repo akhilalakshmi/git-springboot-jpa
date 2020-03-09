@@ -20,7 +20,7 @@ body {
   <div class="container">
     <h1>Register</h1><b>${roletype }<b>
     <p>Please fill in this form to create an account.</p>
-    <hr>${msg}
+    <hr>${msg}<br>${errorMsg}
 
   <b>Name</b>
     <input type="text" placeholder="Enter Name" name="name" required>

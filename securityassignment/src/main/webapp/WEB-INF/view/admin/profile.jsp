@@ -1,7 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -14,29 +18,15 @@ body {
 }
 </style>
 </head>
-<body>
-<form action="/updateadmin" method="post">
-  <div class="container">
-    <h1>Edit</h1>
-    
-    <hr>
+  <a href="/user/success">Home</a>
+	<h2 >Your informations</h2>
+			
+					<p >${msg}</p>	
 
-    <label for="email"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="name"  value="${userdet.name}" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" value="${userdet.password}" required>
-
-    <label for="psw-repeat"><b>Address</b></label>
-    <input type="address" placeholder="address" name="address"  value="${userdet.address}"required>
-    <hr>
-
-   
-    <button type="submit" class="registerbtn">Update</button>
-  
-  </div>
-
-
-</form>
-</body>
-</html>
+<form:form method="post" modelAttribute="user"  action="/updateadmin">
+	<form:hidden path="id" />
+Name<form:input path="name"  /> 
+Password<form:input path="password"  /> 	
+Email<form:input path="email"  /> 			
+		<button type="submit">Update</button>		
+	</form:form>      

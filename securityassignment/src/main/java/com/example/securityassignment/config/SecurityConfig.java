@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.example.securityassignment.repository.UserRepository;
 import com.example.securityassignment.service.CustomUserDetailsService;
-import com.example.securityassignment.service.InterfaceCustomUserDetailsService;
+import com.example.securityassignment.service.UserService;
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
 @EnableWebSecurity
@@ -25,7 +25,7 @@ import com.example.securityassignment.service.InterfaceCustomUserDetailsService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
-	private InterfaceCustomUserDetailsService icustomuserservice;
+	private CustomUserDetailsService icustomuserservice;
 
 
 		@Override

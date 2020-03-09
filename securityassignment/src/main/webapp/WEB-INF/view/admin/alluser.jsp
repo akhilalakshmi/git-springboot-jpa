@@ -18,16 +18,16 @@ body {
 </style>
 </head>
 <body>
-
+  <a href="/user/success">Home</a>
 <table border="2">
 <tr>
 <td>Id</td><td>email</td><td>Address</td><td>Edit</td><td>Delete</td>
 </tr>
-<c:forEach items="${userlist}" var="user">
+<c:forEach items="${users}" var="user">
     <tr>      
         <td>${user.id}</td>
         <td>${user.name}</td>
-        <td>${user.address}</td>
+        <td>${user.email}</td>
         <td><a href="/updateUserdetails?id=${user.id}">Edit</a></td>
       <td><a href="/deleteUser?id=${user.id}">Delete</a></td>
         

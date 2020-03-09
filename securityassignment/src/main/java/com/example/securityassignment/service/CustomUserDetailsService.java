@@ -24,11 +24,11 @@ public class CustomUserDetailsService implements UserDetailsService{
 
 	
 	@Autowired
-	InterfaceCustomUserDetailsService icustomuserservice;
+    UserRepository userrepo;
 	@Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) {
-        Optional<Users> users = icustomuserservice.findByUsername(username);
+        Optional<Users> users = userrepo.findByName(username);
         System.out.println("loadbyusername***********service");
         Users user = users.orElseThrow(() -> new UsernameNotFoundException(username));
         if (user == null) throw new UsernameNotFoundException(username);

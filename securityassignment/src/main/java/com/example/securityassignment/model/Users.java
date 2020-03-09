@@ -1,6 +1,7 @@
 package com.example.securityassignment.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="user")
@@ -29,6 +32,10 @@ public class Users {
 	   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 		  	   private Set<Role> roles = new HashSet<>();
+	   
+	   @OneToMany(mappedBy="user")
+		private List<Msg> msgs;
+	   
 	public Users() {
 		System.out.println("users()");
 	

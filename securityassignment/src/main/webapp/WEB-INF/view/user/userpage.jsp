@@ -30,7 +30,7 @@ body {
 <h1>Hello ${name}</h1>
     <hr>
 
-
+  <a href="/user/success">Home</a>
     <br>
     <a href="/profile">Edit Profile</a>
     <br>
